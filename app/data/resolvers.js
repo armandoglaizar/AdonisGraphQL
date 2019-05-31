@@ -16,8 +16,8 @@ const resolvers = {
     },
 
     Mutation: {  
-        async createSurvey(_, { name, description, questions }) {
-            return await Survey.create({ name, description, questions })
+        async createSurvey(_, { name, description, questions, draft }) {
+            return await Survey.create({ name, description, questions, draft })
         },
 
         async deleteSurvey(_, { id }) {
@@ -27,12 +27,13 @@ const resolvers = {
             return await survey.toJSON()
         },
 
-        async updateSurvey(_, { id, name, description, questions }) {
+        async updateSurvey(_, { id, name, description, questions, draft }) {
             const survey = await Survey.find(id)
 
             survey.name = name
             survey.description = description
             survey.questions = questions
+            survey.draft = draft
 
             await survey.save()
 
