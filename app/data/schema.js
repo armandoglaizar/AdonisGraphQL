@@ -9,6 +9,7 @@ const typeDefs = `
     name: String!
     description: String!
     questions: String!
+    draft: Boolean!
   }
 
   type Query {
@@ -17,9 +18,9 @@ const typeDefs = `
   }
 
   type Mutation {
-    createSurvey(name: String!, description: String!, questions: String!): Survey
+    createSurvey(name: String!, description: String!, questions: String!, draft: Boolean!): Survey
     deleteSurvey(id: Int!): Survey
-    updateSurvey(id: Int!, name: String!, description: String!, questions: String!): Survey
+    updateSurvey(id: Int!, name: String!, description: String!, questions: String!, draft: Boolean!): Survey
   }
 `
 

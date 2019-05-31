@@ -10,6 +10,7 @@ class SurveySchema extends Schema {
       table.string('name').notNullable()
       table.string('description').notNullable()
       table.json('questions').notNullable()
+      table.boolean('draft').notNullable()
       table.timestamps()
     })
   }
