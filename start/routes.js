@@ -19,3 +19,14 @@ const Route = use('Route')
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
+
+const GraphqlAdonis = use('ApolloServer')
+const schema = require('../app/data/schema')
+
+Route.route('/graphql', ({ request, response }) => {
+  return GraphqlAdonis.graphql({ schema }, request, response)
+}, ['GET', 'POST'])
+
+Route.get('/graphiql', ({ request, response }) => {
+  return GraphqlAdonis.graphiql({ endpointURL: '/graphql' }, request, response)
+})
